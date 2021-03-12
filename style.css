@@ -16,7 +16,6 @@
   left: 50%;
   font-size: 2em;
   font-family: monospace, sans-serif;
-  font-weight: bold;
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
