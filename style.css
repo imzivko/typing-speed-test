@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+
 #stats {
   position: absolute;
   top: 40%;
   left: 50%;
   color: black;
   font-size: 1em;
-  font-family: monospace, sans-serif;
+  font-family: 'Roboto Mono', monospace;
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
@@ -15,7 +17,7 @@
   top: 50%;
   left: 50%;
   font-size: 2em;
-  font-family: monospace, sans-serif;
+  font-family: 'Roboto Mono', monospace;
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
