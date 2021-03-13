@@ -1,6 +1,26 @@
+/* Button font */
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
+
+/* Typing text font */
+@import url("https://fonts.googleapis.com/css2?family=B612+Mono&display=swap");
+
+body {
+  height: 100vh;
+  background: rgb(23, 134, 127);
+  background: radial-gradient(
+    circle,
+    rgba(23, 134, 127, 1) 0%,
+    rgba(18, 52, 59, 1) 100%
+  );
+}
+
+/* #input-space {
+  display: none;
+} */
+
 #stats {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   color: black;
   font-size: 1em;
@@ -19,9 +39,11 @@
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
-  background-color: rgba(29, 29, 29, 0.829);
-  color: rgb(230, 230, 230);
-  border-radius: 4px;
+  color: #dddddd;
+  border-radius: 15px;
+  padding: 15px 25px;
+  box-shadow: 0 0px 3.6px -13px rgba(0, 0, 0, 1),
+    0 0px 29px -13px rgba(0, 0, 0, 0.5);
 }
 
 .button {
@@ -37,15 +59,14 @@
   font-family: monospace, sans-serif;
   font-size: 3em;
   transition: 0.1s;
-  border-radius: 3px;
+  border-radius: 7px;
+  color: #ffffff;
+  opacity: 0.8;
+  background: rgb(23, 134, 127);
   text-align: center;
-  background-color: rgba(29, 29, 29, 0.829);
-  color: rgb(230, 230, 230);
+  box-shadow: 0 0px 3.6px -13px rgba(0, 0, 0, 1),
+    0 0px 29px -13px rgba(0, 0, 0, 0.5);
 }
-
-/* .button:hover:first-letter {
-  color: teal;
-} */
 
 .button:hover {
   font-size: 4em;
@@ -56,22 +77,19 @@
 }
 
 .done {
-  color: rgba(153, 255, 0, 0.5);
+  color: #ffffff;
+  opacity: 0.2;
   transition: 0.1s;
 }
 
 .wrong {
-  color: rgba(255, 0, 0, 0.836);
+  color: #e23e57;
   transition: 0.1s;
 }
 
 .cursor {
   background-color: rgba(177, 177, 177, 0.555);
-  transition: 0.2s;
+  transition: 0.1s;
   border-radius: 3px;
-}
-
-.text-completed {
-  background-color: rgba(0, 0, 0, 0.829);
-  color: rgb(230, 230, 230);
+  padding: auto 1px;
 }
