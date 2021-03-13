@@ -1,22 +1,31 @@
-/* Button font */
+/* typing text font  */
+@import url("https://fonts.googleapis.com/css2?family=PT+Mono&display=swap");
+
+/* buttons font */
 @import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
 
-/* Typing text font */
-@import url("https://fonts.googleapis.com/css2?family=B612+Mono&display=swap");
-
 body {
-  height: 100vh;
+  height: 100%;
   background: rgb(23, 134, 127);
   background: radial-gradient(
     circle,
-    rgba(23, 134, 127, 1) 0%,
+    rgba(23, 134, 127, 1) 10%,
     rgba(18, 52, 59, 1) 100%
   );
 }
 
-/* #input-space {
-  display: none;
-} */
+#time-start {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  color: rgb(49, 175, 167);
+  opacity: 0.8;
+  font-size: 1.5em;
+  font-family: monospace, sans-serif;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
 
 #stats {
   position: absolute;
@@ -35,15 +44,17 @@ body {
   top: 50%;
   left: 50%;
   font-size: 2em;
-  font-family: monospace, sans-serif;
+  white-space: pre-wrap;
+  font-family: "PT Mono", sans-serif;
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   color: #dddddd;
   border-radius: 15px;
+  text-shadow: 1px 1px rgb(16, 63, 60);
   padding: 15px 25px;
   box-shadow: 0 0px 3.6px -13px rgba(0, 0, 0, 1),
-    0 0px 29px -13px rgba(0, 0, 0, 0.5);
+    0 0px 29px -13px rgba(0, 0, 0, 1);
 }
 
 .button {
@@ -56,20 +67,22 @@ body {
   cursor: pointer;
   border: none;
   outline: none;
-  font-family: monospace, sans-serif;
+  font-family: "Major Mono Display", sans-serif;
   font-size: 3em;
   transition: 0.1s;
   border-radius: 7px;
   color: #ffffff;
   opacity: 0.8;
+  text-shadow: 2px 2px rgb(16, 63, 60);
   background: rgb(23, 134, 127);
   text-align: center;
   box-shadow: 0 0px 3.6px -13px rgba(0, 0, 0, 1),
-    0 0px 29px -13px rgba(0, 0, 0, 0.5);
+    0 0px 29px -13px rgba(0, 0, 0, 1);
 }
 
 .button:hover {
   font-size: 4em;
+  letter-spacing: 10px;
 }
 
 .hide {
@@ -92,4 +105,5 @@ body {
   transition: 0.1s;
   border-radius: 3px;
   padding: auto 1px;
+  opacity: 1;
 }
