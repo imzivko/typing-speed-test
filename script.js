@@ -9,6 +9,8 @@ const clickSound = new Audio("sounds/buttonClick.mp3");
 const time = document.getElementById("time-elapsed");
 const wordsPerMin = document.getElementById("wpm");
 const accuracy = document.getElementById("accuracy");
+const correctInput = document.getElementById("correctInput");
+const incorrectInput = document.getElementById("incorrectInput");
 
 // Split words.js text into letters and put them in a newly created span element in HTML
 const textIntoCharacters = textLib.split("");
@@ -87,7 +89,9 @@ startButton.addEventListener("click", function () {
       accuracy.textContent = `${(
         (correctLetters / characters.length) *
         100
-      ).toFixed(1)}% - ${correctLetters}/${wrongLetters}`;
+      ).toFixed(1)}%`;
+      correctInput.textContent = ` ${correctLetters}`;
+      incorrectInput.textContent = `${wrongLetters}`;
 
       // Disable input listener on game end
       document.removeEventListener("keydown", keyListener);

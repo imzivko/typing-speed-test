@@ -1,1 +1,1 @@
-const textLib = `A paragraph is a self-contained unit of discourse in writing dealing with a particular point or idea.`;
+const textLib = `A paragraph is a series of related sentences developing a central idea, called the topic.`;

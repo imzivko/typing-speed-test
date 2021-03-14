@@ -35,6 +35,22 @@ body {
   text-align: center;
 }
 
+#correctInput,
+#incorrectInput {
+  font-size: 1em;
+  padding-top: 10px;
+  display: inline-block;
+  opacity: 0.9;
+}
+
+#correctInput {
+  color: rgb(60, 209, 80);
+}
+
+#incorrectInput {
+  color: #e23e57;
+}
+
 #infoText {
   color: rgb(16, 63, 60);
   text-shadow: 1px 1px rgb(21, 119, 113);
