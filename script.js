@@ -5,7 +5,10 @@ const startButton = document.getElementById("start-button");
 const statsDiv = document.getElementById("stats");
 const textDiv = document.getElementById("text");
 const clickSound = new Audio("sounds/buttonClick.mp3");
-const timeStarted = document.getElementById("time-start");
+// Stats list
+const time = document.getElementById("time-elapsed");
+const wordsPerMin = document.getElementById("wpm");
+const accuracy = document.getElementById("accuracy");
 
 // Split words.js text into letters and put them in a newly created span element in HTML
 const textIntoCharacters = textLib.split("");
@@ -37,15 +40,13 @@ let endTime = null;
 // Starting the game
 startButton.addEventListener("click", function () {
   clickSound.play();
-  // Displaying the typing speed and typing text
-  statsDiv.classList.add("hide");
+  // Displaying text
   textDiv.classList.remove("hide");
   startButton.classList.add("hide");
 
   // Listening for button press, starting the time
   const keyListener = document.addEventListener("keypress", ({ key }) => {
     console.log(key);
-    timeStarted.innerHTML = "TIMER ACTIVATED";
 
     // Time starts when the user starts typing
     if (!startTime) {
@@ -75,12 +76,18 @@ startButton.addEventListener("click", function () {
       const wps = (wordNumber / seconds).toFixed(1);
       const wpm = (wps * 60).toFixed(1);
 
-      timeStarted.classList.add("hide");
       textDiv.classList.add("hide");
-      statsDiv.classList.remove("hide");
-      statsDiv.textContent = `${wpm}, ${wps}`;
 
+      // Stats
       correctLetters -= 2 * wrongLetters;
+      statsDiv.classList.remove("hide");
+
+      time.textContent = `${seconds}s`;
+      wordsPerMin.textContent = `${wpm}`;
+      accuracy.textContent = `${(
+        (correctLetters / characters.length) *
+        100
+      ).toFixed(1)}% - ${correctLetters}/${wrongLetters}`;
 
       // Disable input listener on game end
       document.removeEventListener("keydown", keyListener);
