@@ -99,9 +99,35 @@ body {
     0 0px 29px -13px rgba(0, 0, 0, 1);
 }
 
+.button-again {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 10px 10px;
+  font-family: "Major Mono Display", sans-serif;
+  font-size: 2em;
+  transition: 0.1s;
+  border-radius: 15px;
+  color: #ffffff;
+  text-shadow: 2px 2px rgb(16, 63, 60);
+  background: rgb(23, 134, 127);
+  text-align: center;
+  box-shadow: 0 0px 3.6px -13px rgba(0, 0, 0, 1),
+    0 0px 29px -13px rgba(0, 0, 0, 1);
+}
 .button:hover {
   font-size: 4em;
   letter-spacing: 10px;
+}
+
+.button-again:hover {
+  font-size: 3em;
 }
 
 .hide {

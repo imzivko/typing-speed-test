@@ -1,56 +1,62 @@
 "use-strict";
 
 // Grabbing html elements
+//Buttons
 const startButton = document.getElementById("start-button");
-const statsDiv = document.getElementById("stats");
+const retryButton = document.getElementById("retry-button");
+// Typing content
 const textDiv = document.getElementById("text");
+// Sounds
 const clickSound = new Audio("sounds/buttonClick.mp3");
-// Stats list
+// Stats elements
+const statsDiv = document.getElementById("stats");
 const time = document.getElementById("time-elapsed");
 const wordsPerMin = document.getElementById("wpm");
 const accuracy = document.getElementById("accuracy");
 const correctInput = document.getElementById("correctInput");
 const incorrectInput = document.getElementById("incorrectInput");
 
-// Split words.js text into letters and put them in a newly created span element in HTML
-const textIntoCharacters = textLib.split("");
-
-const characters = textIntoCharacters.map((char) => {
-  const span = document.createElement("span");
-  span.innerText = char;
-  textDiv.appendChild(span);
-  return span;
-});
-
-// Hiding game elements before game start
+// Hiding elements before game start
 textDiv.classList.add("hide");
 statsDiv.classList.add("hide");
+retryButton.classList.add("hide");
 
-// Typing - Starting positition
-let cursorPosition = 0;
-let cursorCharacter = characters[cursorPosition];
-cursorCharacter.classList.add("cursor");
-
-// Tracking right/wrong input just for display after game ends
-let wrongLetters = 0;
-let correctLetters = 0;
-
-// Initial time set to null
-let startTime = null;
-let endTime = null;
-
-// Starting the game
+// Wrapping everything in a start button listener
 startButton.addEventListener("click", function () {
   clickSound.play();
-  // Displaying text
+
+  // Displaying elements, hiding start button
   textDiv.classList.remove("hide");
+  retryButton.classList.remove("hide");
   startButton.classList.add("hide");
 
-  // Listening for button press, starting the time
-  const keyListener = document.addEventListener("keypress", ({ key }) => {
-    console.log(key);
+  // Spliting text into characters
+  let randomPara = textLib[Math.trunc(Math.random() * textLib.length)];
+  const textIntoCharacters = randomPara.split("");
 
-    // Time starts when the user starts typing
+  const characters = textIntoCharacters.map((char) => {
+    const span = document.createElement("span");
+    span.innerText = char;
+    textDiv.appendChild(span);
+    return span;
+  });
+
+  // Typing - Starting positition
+  let cursorPosition = 0;
+  let cursorCharacter = characters[cursorPosition];
+  cursorCharacter.classList.add("cursor");
+
+  // Tracking right/wrong input just for statistics
+  let wrongLetters = 0;
+  let correctLetters = 0;
+
+  // Setting initial time to null
+  let startTime = null;
+  let endTime = null;
+
+  // Listening for button press, starting the time
+  const keypress = ({ key }) => {
+    // Time only starts when user starts typing
     if (!startTime) {
       startTime = new Date();
     }
@@ -69,18 +75,28 @@ startButton.addEventListener("click", function () {
       wrongLetters++;
     }
 
-    // Calculations, ending time
+    // This is how I fixed cursor value going into negatives which bricks the game (if you type wrong first character)
+    if (cursorPosition < 0) {
+      cursorCharacter = characters[0];
+      cursorCharacter = characters[++cursorPosition];
+    }
+
+    // Calculating stats, ending time
     if (cursorPosition >= characters.length) {
       endTime = new Date();
       const timeElapsed = endTime - startTime;
       const seconds = (timeElapsed / 1000).toFixed(1);
-      const wordNumber = textLib.split(" ").length;
+      const wordNumber = randomPara.split(" ").length;
       const wps = (wordNumber / seconds).toFixed(1);
       const wpm = (wps * 60).toFixed(1);
 
+      // Removing key listening at game end
+      document.removeEventListener("keypress", keypress);
+
+      // Hide text when game is done
       textDiv.classList.add("hide");
 
-      // Stats
+      // Stats that are displayed at game end
       correctLetters -= 2 * wrongLetters;
       statsDiv.classList.remove("hide");
 
@@ -92,12 +108,9 @@ startButton.addEventListener("click", function () {
       ).toFixed(1)}%`;
       correctInput.textContent = ` ${correctLetters}`;
       incorrectInput.textContent = `${wrongLetters}`;
-
-      // Disable input listener on game end
-      document.removeEventListener("keydown", keyListener);
       return;
     }
-
     cursorCharacter.classList.add("cursor");
-  });
+  };
+  document.addEventListener("keypress", keypress);
 });
