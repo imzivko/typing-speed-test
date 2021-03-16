@@ -16,6 +16,8 @@ const accuracy = document.getElementById("accuracy");
 const correctInput = document.getElementById("correctInput");
 const incorrectInput = document.getElementById("incorrectInput");
 
+const input = document.getElementById("inputT");
+
 // Hiding elements before game start
 textDiv.classList.add("hide");
 statsDiv.classList.add("hide");
@@ -23,6 +25,7 @@ retryButton.classList.add("hide");
 
 // Wrapping everything in a start button listener
 startButton.addEventListener("click", function () {
+  inputT.focus();
   clickSound.play();
 
   // Displaying elements, hiding start button
