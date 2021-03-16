@@ -16,8 +16,6 @@ const accuracy = document.getElementById("accuracy");
 const correctInput = document.getElementById("correctInput");
 const incorrectInput = document.getElementById("incorrectInput");
 
-const input = document.getElementById("inputT");
-
 // Hiding elements before game start
 textDiv.classList.add("hide");
 statsDiv.classList.add("hide");
@@ -25,7 +23,6 @@ retryButton.classList.add("hide");
 
 // Wrapping everything in a start button listener
 startButton.addEventListener("click", function () {
-  inputT.focus();
   clickSound.play();
 
   // Displaying elements, hiding start button
@@ -94,7 +91,7 @@ startButton.addEventListener("click", function () {
       const wpm = (wps * 60).toFixed(1);
 
       // Removing key listening at game end
-      document.removeEventListener("keydown", keypress);
+      document.removeEventListener("keypress", keypress);
 
       // Hide text when game is done
       textDiv.classList.add("hide");
@@ -115,5 +112,5 @@ startButton.addEventListener("click", function () {
     }
     cursorCharacter.classList.add("cursor");
   };
-  document.addEventListener("keydown", keypress);
+  document.addEventListener("keypress", keypress);
 });
