@@ -94,7 +94,7 @@ startButton.addEventListener("click", function () {
       const wpm = (wps * 60).toFixed(1);
 
       // Removing key listening at game end
-      document.removeEventListener("keypress", keypress);
+      document.removeEventListener("keydown", keypress);
 
       // Hide text when game is done
       textDiv.classList.add("hide");
@@ -115,5 +115,5 @@ startButton.addEventListener("click", function () {
     }
     cursorCharacter.classList.add("cursor");
   };
-  document.addEventListener("keypress", keypress);
+  document.addEventListener("keydown", keypress);
 });
