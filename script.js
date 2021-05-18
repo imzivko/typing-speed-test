@@ -1,4 +1,4 @@
-"use-strict";
+"use strict";
 
 // Grabbing html elements
 //Buttons
