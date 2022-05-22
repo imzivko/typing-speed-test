@@ -21,6 +21,17 @@ textDiv.classList.add("hide");
 statsDiv.classList.add("hide");
 retryButton.classList.add("hide");
 
+// get a random quote
+let quote;
+
+async function getQuote() {
+  const results = await fetch("https://api.quotable.io/random");
+  const data = await results.json();
+  quote = data.content;
+}
+
+getQuote();
+
 // Wrapping everything in a start button listener
 startButton.addEventListener("click", function () {
   clickSound.play();
@@ -30,9 +41,8 @@ startButton.addEventListener("click", function () {
   retryButton.classList.remove("hide");
   startButton.classList.add("hide");
 
-  // Spliting text into characters
-  let randomPara = textLib[Math.trunc(Math.random() * textLib.length)];
-  const textIntoCharacters = randomPara.split("");
+  // Split text into characters
+  const textIntoCharacters = quote.split("");
 
   const characters = textIntoCharacters.map((char) => {
     const span = document.createElement("span");
@@ -86,7 +96,7 @@ startButton.addEventListener("click", function () {
       endTime = new Date();
       const timeElapsed = endTime - startTime;
       const seconds = (timeElapsed / 1000).toFixed(1);
-      const wordNumber = randomPara.split(" ").length;
+      const wordNumber = quote.split(" ").length;
       const wps = (wordNumber / seconds).toFixed(1);
       const wpm = (wps * 60).toFixed(1);
 
