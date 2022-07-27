@@ -81,14 +81,8 @@ startButton.addEventListener("click", function () {
       cursorCharacter.classList.add("wrong");
       cursorCharacter.classList.remove("done");
       cursorCharacter.classList.remove("cursor");
-      cursorCharacter = characters[--cursorPosition];
+      cursorCharacter = characters[cursorPosition];
       wrongLetters++;
-    }
-
-    // This is how I fixed cursor value going into negatives which bricks the game (if you type wrong first character)
-    if (cursorPosition < 0) {
-      cursorCharacter = characters[0];
-      cursorCharacter = characters[++cursorPosition];
     }
 
     // Calculating stats, ending time
